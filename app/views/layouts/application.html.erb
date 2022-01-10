@@ -11,15 +11,8 @@
   </head>
 
   <body>
-    <h1 align="center">Alpha Blog</h1>
-    <h3 align="center">
-      <%= link_to 'Home', root_path %>
-      | <%= link_to 'About', about_path %>
-      | <%= link_to 'Articles', articles_path %>
-    </h3>
-    <% flash.each do |k, v| %>
-      <%= v.to_s %>
-    <% end %>
+    <%= render 'layouts/navigation' %>
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>

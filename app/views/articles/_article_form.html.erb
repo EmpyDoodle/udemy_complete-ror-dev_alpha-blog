@@ -1,0 +1,30 @@
+<% if @article.errors.any? %>
+  <p>
+    Article could not be saved:
+    <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
+<%= form_with model: @article, local: true do |article_form| %>
+
+  <div>
+    <%= article_form.label  :title %>           <!-- specifying form field & its value -->
+    <br />
+    <%= article_form.text_field  :title %>
+  </div>
+
+  <div>
+    <%= article_form.label     :description %>         <!-- label of description field -->
+    <br />
+    <%= article_form.text_area :description %>          <!-- area to enter description -->
+  </div>
+
+  <div>
+    <%= article_form.submit %>               <!-- submit the data to @article variable -->
+  </div>
+
+<% end %>                                                      <!-- end the Ruby block -->
