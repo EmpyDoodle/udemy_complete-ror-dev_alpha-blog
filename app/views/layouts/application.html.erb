@@ -12,6 +12,9 @@
 
   <body>
     <h1>Alpha Blog</h1>
+    <% flash.each do |k, v| %>
+      <%= v.to_s %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
