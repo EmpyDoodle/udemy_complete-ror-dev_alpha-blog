@@ -1,30 +1,50 @@
 <% if @article.errors.any? %>
-  <p>
-    Article could not be saved:
-    <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %>
-      <% end %>
-    </ul>
-  </p>
+  <div class="row">
+    <div class="col s8 xl5">
+      <div class="card">
+        <div class="card-content">
+          <i class="material-icons medium right">error</i>
+          <span class="card-title">Article could not be saved</span>
+          <p>
+            <ul class="browser-default">
+              <% @article.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%= form_with model: @article, local: true do |article_form| %>
 
-  <div>
-    <%= article_form.label  :title %>           <!-- specifying form field & its value -->
-    <br />
-    <%= article_form.text_field  :title %>
+  <div class="row">
+    <div class="input-field col s8">
+      <i class="material-icons prefix">title</i>
+      <%= article_form.text_field :title, :"data-length" => @article.length_val(:title, :maximum) %>
+      <%= article_form.label      :title %>           <!-- specifying form field & its value -->
+    </div>
   </div>
 
-  <div>
-    <%= article_form.label     :description %>         <!-- label of description field -->
-    <br />
-    <%= article_form.text_area :description %>          <!-- area to enter description -->
+  <div class="row">
+    <div class="input-field col s8">
+      <i class="material-icons prefix">subject</i>
+      <%= article_form.text_area :description,
+                                 class: 'materialize-textarea',
+                                 :"data-length" => @article.length_val(:description, :maximum) %>
+      <%= article_form.label     :description %>         <!-- label of description field -->
+    </div>
   </div>
 
-  <div>
-    <%= article_form.submit %>               <!-- submit the data to @article variable -->
+  <div class="row">
+    <div class="col s8 center-align">
+      <%= article_form.button :class => 'btn waves-effect waves-light' do %>
+        <%= article_form.send(:submit_default_value) %>  <!-- Fetch what submit helper would have shown -->
+        <i class="material-icons right">save</i>
+      <% end %>
+    </div>
   </div>
 
-<% end %>                                                      <!-- end the Ruby block -->
+<% end %>  <!-- end the Rails form block -->

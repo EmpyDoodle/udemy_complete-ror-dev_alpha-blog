@@ -1,0 +1,10 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    M.AutoInit();
+    M.CharacterCounter.init(document.querySelectorAll('[data-length]'));
+  });
+  if (document.readyState!='loading') {
+    M.AutoInit();
+    M.CharacterCounter.init(document.querySelectorAll('[data-length]'));
+  };
+</script>

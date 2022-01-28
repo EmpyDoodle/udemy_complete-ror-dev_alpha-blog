@@ -1,5 +1,15 @@
-<h2>New Article</h2>
-
-<%= render 'article_form' %>
-
-<p><%= link_to 'Cancel', articles_path %></p>
+<div class="container">
+  <div class="row">
+    <h2>New Article</h2>
+  </div>
+  <div class="row">
+    <%= render 'article_form' %>
+  </div>
+  <div class="row">
+    <div class="col s8 center-align">
+      <%= link_to articles_path, :class => 'btn-floating btn-large waves-effect waves-light red' do %>
+        <i class="material-icons">close</i>
+      <% end %>
+    </div>
+  </div>
+</div>

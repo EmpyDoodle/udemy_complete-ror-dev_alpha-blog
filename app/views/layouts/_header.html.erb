@@ -1,0 +1,28 @@
+<header>
+  <ul id="nav-dropdown" class="dropdown-content">
+    <% Article.all.each do |article| %>
+      <li><%= link_to "#{article.id}: #{article.title}", article_path(article) %></li>
+      <li class="divider"></li>
+    <% end %>
+    <li><%= link_to 'All Articles', articles_path %></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo left">&nbsp; Alpha Blog</a>
+      <ul class="right">
+        <li>
+          <%= link_to root_path do %>
+            <i class="material-icons">home</i>
+          <% end %>
+        </li>
+        <li><%= link_to 'About', about_path %></li>
+        <!-- Dropdown Trigger -->
+        <li>
+          <a class="dropdown-trigger" href="#!" data-target="nav-dropdown">
+            Articles<i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
