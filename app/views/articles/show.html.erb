@@ -1,15 +1,69 @@
-<h2> Showing Article <%= @article.id.to_s %> </h2>
-
-<p>Title: <strong><%= @article.title %></strong></p>
-<p>Description: <strong><%= @article.description %></strong></p>
-
-<p>
-  <%= link_to 'Edit', edit_article_path(@article) %>
-  | <%= 
-    link_to 'Delete', 
-    article_path(@article),
-    method: :delete,
-    data: { confirm: 'Are you sure?' }
-  %>
-  | <%= link_to 'Back to Articles', articles_path %>
-</p>
+<div class="row">
+  <div class="container">
+    <h2 class="header center"><%= @article.id.to_s %>: <%= @article.title.to_s %></h2>
+  </div>
+</div>
+<div class="row">
+  <div class="container">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s4">
+          <a href="#description">
+            <i class="material-icons inline">subject</i> &nbsp; Description
+          </a>
+        </li>
+        <li class="tab col s4">
+          <a href="#content">
+            <i class="material-icons inline">assignment</i> &nbsp; Content
+          </a>
+        </li>
+        <li class="tab col s4">
+          <a href="#thumb">
+            <i class="material-icons inline">image</i> &nbsp; Thumnail
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12">
+    <div class="container">
+      <div id="description">
+        <p><%= @article.description %></p>
+      </div>
+      <div id="content">
+        <p>nada</p>
+      </div>
+      <div id="thumb">
+        <p>zip</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to edit_article_path(@article),
+                class: 'btn-floating btn-large waves-effect blue tooltipped right',
+                :"data-tooltip" => 'Edit Article',
+                :"data-position" => 'left' do %>
+      <i class="material-icons">edit</i>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= link_to article_path(@article),
+                method: :delete,
+                data: { confirm: 'Are you sure?' },
+                class: 'btn-floating btn-large waves-effect red tooltipped right',
+                :"data-tooltip" => 'Delete Article',
+                :"data-position" => 'left' do %>
+      <i class="material-icons">delete</i>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= link_to articles_path,
+                class: 'btn-floating btn-large waves-effect green tooltipped right',
+                :"data-tooltip" => 'Back to Articles',
+                :"data-position" => 'left' do %>
+      <i class="material-icons">subdirectory_arrow_left</i>
+    <% end %>
+  </div>
+</div>

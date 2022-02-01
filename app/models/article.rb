@@ -7,4 +7,5 @@ class Article < ApplicationRecord
       e.is_a? ActiveRecord::Validations::LengthValidator
     end.first.options[minmax]
   end
+
 end
